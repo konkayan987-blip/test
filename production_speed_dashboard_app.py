@@ -51,3 +51,22 @@ if uploaded_file is not None:
 
 else:
     st.info("กรุณาอัปโหลดไฟล์ CSV เพื่อเริ่มต้น")
+# สร้างไฟล์ requirements.txt สำหรับ Streamlit Cloud
+import pypandoc
+
+content = """streamlit
+pandas
+plotly
+"""
+
+file_path = "/mnt/data/requirements.txt"
+
+pypandoc.convert_text(
+    content,
+    'plain',
+    format='md',
+    outputfile=file_path,
+    extra_args=['--standalone']
+)
+
+file_path
